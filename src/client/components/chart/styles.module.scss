@@ -1,0 +1,12 @@
+.chart {
+    position: sticky;
+    top: 60px;
+    left: 0;
+    height: 286px;
+    background: linear-gradient(#1E2530, #293341);
+
+    & canvas {
+        height: 100%;
+        width: 100%;
+    }
+}
