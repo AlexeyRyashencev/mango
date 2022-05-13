@@ -37,6 +37,7 @@
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "heroku": "^7.60.2",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-hot-loader": "4.13.0"
