@@ -8,7 +8,6 @@ const config = {
     entry: './src/client/index.tsx',
     output: {
         filename: 'bundle.js',
-        clean: true,
         path: path.resolve(__dirname, 'public')
     },
     resolve: {
