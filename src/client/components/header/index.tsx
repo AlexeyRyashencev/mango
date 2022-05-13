@@ -1,0 +1,17 @@
+import React from 'react';
+import styles from './styles.module.scss';
+import img from '../../../../public/assets/logo.png';
+
+export const Header = () => (
+    <header className={ styles.header }>
+        <div className={ styles.logoWr } onClick={ () => window.location.reload() }>
+            <div className={ styles.logo }>
+                <img src={ img } alt="logo"></img>
+            </div>
+            Mango Deals
+        </div>
+        <div className={ styles.buttonWr }>
+            <button className={ styles.button }>New Deal</button>
+        </div>
+    </header>
+);

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "components": ["./src/client/components/"],
+      "utils": ["./src/client/utils/"],
+      "types": ["./src/client/types/"]
+    }
+  },
+  "include": [
+    "src/client/**/*.tsx",
+    "src/client/**/*.scss"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
