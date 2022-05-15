@@ -110,7 +110,7 @@ export const Chart: React.FC<Props> = (props: Props) => {
 
         /* draw selected deal */
         const selectedDealIndex = data.findIndex((deal) => deal.id === selectedDealId);
-        if (selectedDealIndex > 0) {
+        if (selectedDealIndex >= 0) {
             const py = convertCoordinateToYPixel(data[selectedDealIndex].value, maxDiffHeightPercent);
 
             ctx.beginPath();
