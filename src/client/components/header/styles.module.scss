@@ -17,10 +17,12 @@
     font-size: 24px;
     font-weight: lighter;
     align-items: center;
+    font-family: 'Sansation', sans-serif;
 
     .logo {
         height: 36px;
         width: 36px;
+        padding: 0 11px 0 0;
 
         img {
             width: 100%;
@@ -31,6 +33,7 @@
 
 .buttonWr {
     float: right;
+
     .button {
         width: 90px;
         height: 30px;
