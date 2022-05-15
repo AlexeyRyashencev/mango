@@ -7,6 +7,7 @@ import { NewDealModal } from 'components/new-deal-modal';
 
 import { getQueryString } from 'utils/query';
 import { DealType } from 'types/deal';
+import { NewDealFormType } from 'types/new-deal-form-type';
 
 import styles from './app.module.scss';
 
@@ -48,15 +49,29 @@ export const App: React.FC = () => {
         });
     };
 
-    const handlerTriggerNewDealModalState = (show: boolean) => {
+    const handlerChangeNewDealModalState = (show: boolean) => {
         setShowNewDealModal(show);
+    };
+
+    const handleCreateNewDeal = (formData: NewDealFormType) => {
+        fetch('http://localhost:3001/api/deal', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        }).then(() => {
+            setDeals([...deals, formData].sort((a, b) => a.date - b.date,
+            ));
+        });
     };
 
     useEffect(fetchDeals.bind(null, 10, 0), []);
 
     return (
         <div className={ styles.app }>
-            <Header onShowNewDealModal={ handlerTriggerNewDealModalState.bind(null, true) } />
+            <Header onShowNewDealModal={ handlerChangeNewDealModalState.bind(null, true) } />
             <Chart
                 data={ deals }
                 selectedDealId={ selectedDealId }
@@ -70,7 +85,8 @@ export const App: React.FC = () => {
             />
             <NewDealModal
                 show={ showNewDealModal }
-                onClose={ handlerTriggerNewDealModalState.bind(null, false) }
+                onClose={ handlerChangeNewDealModalState.bind(null, false) }
+                onSubmitForm={ handleCreateNewDeal }
             />
         </div>
     );
