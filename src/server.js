@@ -47,11 +47,12 @@ app.delete('/api/deal/:id', (request, response) => {
 });
 
 app.post('/api/deal', (request, response) => {
-    dealsList.push({
+    const newDeal = {
         ...request.body,
         id: getRndId()
-    });
-    response.sendStatus(200);
+    };
+    dealsList.push(newDeal);
+    response.json(newDeal);
 });
 
 app.listen(port, () => console.log(`Running on port ${port}`));
