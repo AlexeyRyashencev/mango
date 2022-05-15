@@ -1,5 +1,5 @@
 export type DealType = {
     id: string;
-    value: string;
+    value: number;
     date: Date;
 };

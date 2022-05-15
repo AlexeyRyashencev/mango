@@ -32,7 +32,7 @@ const convertCoordinateToYPixel = (dealValue: number, maxDiffHeightPercent: numb
 
 export const Chart: React.FC<Props> = (props: Props) => {
     const canvasRef = useRef(null)
-    const { data } = props;
+    const { data, selectedDealId } = props;
     useEffect(() => {
         if (data.length === 0) {
             return;
@@ -107,6 +107,41 @@ export const Chart: React.FC<Props> = (props: Props) => {
              } */
         }
         ctx.stroke();
+
+        /* draw selected deal */
+        const selectedDealIndex = data.findIndex((deal) => deal.id === selectedDealId);
+        if (selectedDealIndex > 0) {
+            const py = convertCoordinateToYPixel(data[selectedDealIndex].value, maxDiffHeightPercent);
+
+            ctx.beginPath();
+            ctx.strokeStyle = '#346D8D';
+            ctx.lineWidth = 1;
+            ctx.moveTo(30 * selectedDealIndex, 0);
+            ctx.lineTo(30 * selectedDealIndex, CANVAS_HEIGHT);
+            ctx.moveTo(0, py);
+            ctx.lineTo(CANVAS_WIDTH, py);
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(132,211,255, 0.33)';
+            ctx.ellipse(30 * selectedDealIndex, py, 24, 24, 0, 0, 2 * Math.PI, false);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.fillStyle = '#84D3FF';
+            ctx.ellipse(30 * selectedDealIndex, py, 10, 10, 0, 0, 2 * Math.PI, false);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.fillStyle = '#fff';
+            ctx.ellipse(30 * selectedDealIndex, py, 7, 7, 0, 0, 2 * Math.PI);
+            ctx.closePath();
+            ctx.fill();
+        }
+
     }, [props]);
 
     return (
