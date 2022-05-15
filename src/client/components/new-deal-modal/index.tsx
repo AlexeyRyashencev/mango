@@ -1,30 +1,34 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
+import { NewDealFormType } from 'types/new-deal-form-type';
+
 import styles from './styles.module.scss';
 import crossImg from '../../../../public/assets/cross-icon.png';
 
 type Props = {
     show: boolean;
     onClose: () => void;
+    onSubmitForm: (formData: NewDealFormType) => void;
 };
 
 export const NewDealModal: React.FC<Props> = (props: Props) => {
-    const { show, onClose } = props;
-    const { register, handleSubmit } = useForm({
+    const { show, onClose, onSubmitForm } = props;
+    const { register, handleSubmit } = useForm<NewDealFormType>({
         mode: 'onSubmit',
         defaultValues: {
-            date: new Date(),
+            date: new Date().toDateString(),
             value: 0,
         },
     });
+
     if (!show) {
         return null;
     }
 
-    const onSubmit = () => {
-
-    }
+    const onSubmit = (formData: NewDealFormType) => {
+        onSubmitForm(formData);
+    };
 
     return (
         <React.Fragment>

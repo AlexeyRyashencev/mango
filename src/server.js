@@ -1,10 +1,12 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 
 const app = express();
 const port = 3001;
 app.use(express.static('public'));
+app.use(express.json());
 app.use(cors());
 
 /* mock initial deals values */
@@ -41,7 +43,15 @@ app.get('/api/deals', (request, response) => {
 app.delete('/api/deal/:id', (request, response) => {
     // todo: add id validation
     dealsList = dealsList.filter((deal) => deal.id !== request.params['id']);
-    response.send('ok');
+    response.sendStatus(200);
+});
+
+app.post('/api/deal', (request, response) => {
+    dealsList.push({
+        ...request.body,
+        id: getRndId()
+    });
+    response.sendStatus(200);
 });
 
 app.listen(port, () => console.log(`Running on port ${port}`));

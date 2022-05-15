@@ -62,7 +62,11 @@
             color: #9AA5BE;
             padding: 0 0 9px;
         }
-
+        input[type=datetime-local]::-webkit-inner-spin-button,
+        input[type=datetime-local]::-webkit-calendar-picker-indicator {
+            display: none;
+            -webkit-appearance: none;
+        }
         input[type=datetime-local], input[type=number] {
             height: 48px;
             color: #9AA5BE;
