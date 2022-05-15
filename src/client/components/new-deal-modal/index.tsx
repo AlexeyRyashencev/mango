@@ -35,6 +35,7 @@ export const NewDealModal: React.FC<Props> = (props: Props) => {
     }
 
     const onSubmit = async (formData: NewDealFormType) => {
+
         const showAnimation = await onSubmitForm(formData);
         if (showAnimation) {
             setPlaySuccessAnimationStatus(true);
@@ -65,7 +66,7 @@ export const NewDealModal: React.FC<Props> = (props: Props) => {
                         <form className={ styles.form } onSubmit={ handleSubmit(onSubmit) }>
                             <div className={ styles.formRow }>
                                 <label>Current Date</label>
-                                <input type="datetime-local" { ...register('date') } />
+                                <input type="datetime" { ...register('date') } />
                             </div>
                             <div className={ styles.formRow }>
                                 <label>Enter value</label>

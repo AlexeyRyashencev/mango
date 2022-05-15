@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 
@@ -10,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 /* mock initial deals values */
-const getRndValue = (max = 600) => (Math.random() * max).toFixed(2);
+const getRndValue = (max = 600, spread = 50) => (Math.random() * max + spread).toFixed(2);
 const getRndDate = () => new Date(Date.UTC(2022, 1, 1, 2, Math.random() * 59, Math.random() * 59));
 const getRndId = () => Math.random()
     .toString(16)
@@ -19,10 +18,11 @@ const getRndId = () => Math.random()
 let dealsList = [];
 
 while (dealsList.length < 50) {
+    const newValue = dealsList.length === 0 ? getRndValue() : Number(getRndValue(dealsList[dealsList.length - 1].value), Math.random() * (30 + 30) - 30);
     dealsList.push({
         id: getRndId(),
         date: getRndDate(),
-        value: getRndValue()
+        value: newValue
     });
 }
 
