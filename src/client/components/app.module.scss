@@ -12,6 +12,11 @@
     src: url('/public/assets/Roboto-Regular.ttf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Sansation';
+    src: url('/public/assets/sansation-light.ttf') format('opentype');
+}
+
 .app {
     position: relative;
     height: 100%;
