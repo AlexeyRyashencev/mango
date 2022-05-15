@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './styles.module.scss';
 import img from '../../../../public/assets/logo.png';
 
-export const Header = () => (
+type Props = {
+    onShowNewDealModal: () => void;
+};
+
+export const Header: React.FC<Props> = (props: Props) => (
     <header className={ styles.header }>
         <div className={ styles.logoWr } onClick={ () => window.location.reload() }>
             <div className={ styles.logo }>
@@ -11,7 +15,7 @@ export const Header = () => (
             Mango Deals
         </div>
         <div className={ styles.buttonWr }>
-            <button className={ styles.button }>New Deal</button>
+            <button onClick={ props.onShowNewDealModal } className={ styles.button }>New Deal</button>
         </div>
     </header>
 );

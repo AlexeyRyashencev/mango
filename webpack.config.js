@@ -12,9 +12,9 @@ const config = {
     },
     resolve: {
         alias: {
-            components: path.resolve(__dirname, '/src/client/components'),
-            utils: path.resolve(__dirname, '/src/client/utils'),
-            types: path.resolve(__dirname, '/src/client/types'),
+            'components': path.resolve(__dirname, 'src/client/components'),
+            'utils': path.resolve(__dirname, 'src/client/utils'),
+            'types': path.resolve(__dirname, 'src/client/types'),
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss']
     },

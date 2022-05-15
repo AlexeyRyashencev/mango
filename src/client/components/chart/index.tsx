@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { DealType } from 'src/client/types/deal';
+import { DealType } from 'types/deal';
 
 import styles from './styles.module.scss';
 
@@ -9,8 +9,9 @@ const GRID_VERTICAL_LINES_COUNT = 12;
 const GRID_HORIZONTAL_LINES_COUNT = 5;
 
 type Props = {
-    canvasProps: {};
     data: DealType[];
+    selectedDealId: string;
+    canvasProps?: {};
 };
 
 /* calculate max deal value and return percent between max deal value and CANVAS_HEIGHT */

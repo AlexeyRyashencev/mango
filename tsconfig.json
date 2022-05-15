@@ -20,7 +20,8 @@
   },
   "include": [
     "src/client/**/*.tsx",
-    "src/client/**/*.scss"
+    "src/client/**/*.scss",
+    "src/client/types/declaration.d.ts"
   ],
   "exclude": [
     "node_modules"

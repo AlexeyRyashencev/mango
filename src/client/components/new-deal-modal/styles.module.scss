@@ -1,0 +1,112 @@
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(#000, 0.25);
+    // firma says 40px, but for 40px BG looks very bad
+    // not working on FF, but can use filter: blur
+    backdrop-filter: blur(20px);
+}
+
+.modal {
+    height: 395px;
+    width: calc(100% - (36px + 70px));
+    margin: 0 18px;
+    padding: 35px 35px 0;
+    position: fixed;
+    bottom: 16px;
+    background: rgba(#fff, 0.12);
+    border-radius: 16px;
+
+    .headerWr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header {
+            font-weight: 700;
+            font-size: 24px;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .closeIconWr {
+            height: 20px;
+            width: 20px;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .form {
+        margin: 42px 0 0;
+
+        .formRow {
+            display: flex;
+            flex-direction: column;
+
+            + .formRow {
+                margin: 23px 0 0;
+            }
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #9AA5BE;
+            padding: 0 0 9px;
+        }
+
+        input[type=datetime-local], input[type=number] {
+            height: 48px;
+            color: #9AA5BE;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #2C333D;
+            border: 1px #3C4251 solid;
+            border-radius: 6px;
+            padding: 0 20px;
+
+            &:focus {
+                outline: 0;
+                outline-color: transparent;
+                outline-style: none;
+                color: #fff;
+                background-color: rgba(#2C333D, 0.5);
+                box-shadow: 0 0 0 4px rgba(#00A3FF, 0.10);
+                border: 1px #00A3FF solid;
+            }
+        }
+    }
+
+    .formFooter {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 108px;
+        background-color: rgba(#000, 0.1);
+        align-items: center;
+
+        .submit {
+            width: 120px;
+            height: 48px;
+            background: #3EAEFF;
+            color: #fff;
+            box-shadow: 0 0 0 3px rgba(#00AAE0, 0.19);
+            border-radius: 6px;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}
