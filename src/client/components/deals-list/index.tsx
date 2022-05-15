@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
-import { DealType } from 'src/client/types/deal';
+import React from 'react';
 import classname from 'classnames';
-import trashIcon from '../../../../public/assets/trash.png';
+
+import { DealType } from 'types/deal';
 import styles from './styles.module.scss';
+import trashIcon from '../../../../public/assets/trash.png';
 
 type Props = {
     deals: DealType[];
-    onShowNextPage: () => {};
-    onSelectDeal: (dealId: string) => {};
+    selectedDealId: string;
+    onShowNextPage: () => void;
+    onSelectDeal: (dealId: string) => void;
+    onRemoveDeal:(dealId: string) => void;
 };
 
 export const DealsList: React.FC<Props> = (props: Props) => {
-    const { deals, onShowNextPage, onSelectDeal } = props;
-    const [selectedDeal, setSelectedDeal] = useState<string>('');
+    const {
+        deals,
+        selectedDealId,
+        onShowNextPage,
+        onSelectDeal,
+        onRemoveDeal,
+    } = props;
 
-    const handlerRowSelected = (dealId: string) => (
-        setSelectedDeal(dealId === selectedDeal ? '' : dealId)
-    );
+    const handlerRowSelected = (dealId: string) => {
+        onSelectDeal(dealId);
+
+    };
 
     return (
-        <>
+        <React.Fragment>
             <div className={ styles.table }>
                 <div className={ styles.tableHeader }>
                     <div className={ styles.tableRow }>
@@ -30,7 +39,7 @@ export const DealsList: React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={ styles.tableBody }>
                     { deals.map((deal) => {
-                        const isRowSelected = selectedDeal === deal.id;
+                        const isRowSelected = selectedDealId === deal.id;
                         return (
                             <div
                                 key={ deal.id }
@@ -44,7 +53,7 @@ export const DealsList: React.FC<Props> = (props: Props) => {
                                     { isRowSelected && (
                                         <div
                                             className={ styles.trashIconWr }
-                                            onClick={ onSelectDeal.bind(null, deal.id) }
+                                            onClick={ onRemoveDeal.bind(null, deal.id) }
                                         >
                                             <img src={ trashIcon } alt="delete"></img>
                                         </div>
@@ -58,6 +67,6 @@ export const DealsList: React.FC<Props> = (props: Props) => {
             <div className={ styles.tableFooter }>
                 <button onClick={ onShowNextPage } className={ styles.footerButton }>Load next page</button>
             </div>
-        </>
+        </React.Fragment>
     );
 };
