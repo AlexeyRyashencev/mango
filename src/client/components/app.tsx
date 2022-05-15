@@ -53,18 +53,23 @@ export const App: React.FC = () => {
         setShowNewDealModal(show);
     };
 
-    const handleCreateNewDeal = (formData: NewDealFormType) => {
-        fetch('http://localhost:3001/api/deal', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        }).then(() => {
-            setDeals([...deals, formData].sort((a, b) => a.date - b.date,
-            ));
-        });
+    const handleCreateNewDeal = async (formData: NewDealFormType) => {
+        try {
+            const res = await fetch('http://localhost:3001/api/deal', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            const newDeal = await res.json();
+            setDeals([...deals, newDeal].sort((a, b) => a.date - b.date));
+            return true;
+        } catch (_e) {
+            return false;
+        }
+
     };
 
     useEffect(fetchDeals.bind(null, 10, 0), []);

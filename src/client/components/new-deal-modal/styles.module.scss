@@ -62,11 +62,13 @@
             color: #9AA5BE;
             padding: 0 0 9px;
         }
+
         input[type=datetime-local]::-webkit-inner-spin-button,
         input[type=datetime-local]::-webkit-calendar-picker-indicator {
             display: none;
             -webkit-appearance: none;
         }
+
         input[type=datetime-local], input[type=number] {
             height: 48px;
             color: #9AA5BE;
@@ -112,5 +114,60 @@
             font-size: 16px;
             line-height: 19px;
         }
+    }
+
+    .successWr {
+        margin: 68px 0 0;
+
+        .success {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 130px;
+            width: 130px;
+            margin: 0 auto;
+            background-color: rgba(#00FFA3, 0.4);
+            border-radius: 40px;
+            box-shadow: 0 0 0 8px rgba(#00FFA3, 0.1);
+            animation: checkSuccess ease-in-out 2s forwards;
+            -moz-animation: checkSuccess ease-in-out 2s forwards;
+            -webkit-animation: checkSuccess ease-in-out 2s forwards;
+
+            .checkIconWr {
+                height: 81px;
+                width: 81px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 24px;
+            text-align: center;
+            color: #fff;
+            padding: 10px 0 0;
+            line-height: 33px;
+        }
+    }
+}
+
+@keyframes checkSuccess {
+    0% {
+        transform: scale(.3);
+        border-radius: 100%;
+    }
+    13% {
+        transform: scale(1.5);
+    }
+    25% {
+        transform: scale(1);
+        border-radius: 40px;
+    }
+    100% {
+        transform: scale(1);
     }
 }
